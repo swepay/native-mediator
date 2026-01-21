@@ -1,9 +1,17 @@
-# NativeMediator
+<p align="center">
+  <img src="native-mediator-icon.png" alt="NativeMediator Logo" width="200"/>
+</p>
 
-A high-performance mediator pattern library for .NET, optimized for **Native AOT** and **serverless functions** (AWS Lambda, Azure Functions).
+<h1 align="center">NativeMediator</h1>
 
-[![NuGet](https://img.shields.io/nuget/v/NativeMediator.svg)](https://www.nuget.org/packages/NativeMediator/)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+<p align="center">
+  A high-performance mediator pattern library for .NET, optimized for <strong>Native AOT</strong> and <strong>serverless functions</strong> (AWS Lambda, Azure Functions).
+</p>
+
+<p align="center">
+  <a href="https://www.nuget.org/packages/NativeMediator/"><img src="https://img.shields.io/nuget/v/NativeMediator.svg" alt="NuGet"/></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"/></a>
+</p>
 
 ## ✨ Features
 

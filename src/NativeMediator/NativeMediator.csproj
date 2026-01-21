@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
@@ -16,6 +16,7 @@
     <PackageTags>mediator;cqrs;native-aot;serverless;lambda;azure-functions</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>native-mediator-icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/swepay/native-mediator</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
@@ -26,6 +27,7 @@
 
   <ItemGroup>
     <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\native-mediator-icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
