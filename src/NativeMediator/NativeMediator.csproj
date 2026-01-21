@@ -10,7 +10,7 @@
 
     <!-- Package metadata -->
     <PackageId>NativeMediator</PackageId>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Authors>Swepay</Authors>
     <Description>A high-performance mediator pattern library for .NET, optimized for Native AOT and serverless functions (AWS Lambda, Azure Functions)</Description>
     <PackageTags>mediator;cqrs;native-aot;serverless;lambda;azure-functions</PackageTags>
