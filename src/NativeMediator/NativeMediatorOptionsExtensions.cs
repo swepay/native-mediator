@@ -28,8 +28,10 @@ public static class NativeMediatorOptionsExtensions
         {
             ServiceType = typeof(IRequestHandler<TRequest, TResponse>),
             ImplementationType = typeof(THandler),
-            WrapperServiceType = typeof(IRequestHandlerWrapper<TResponse>),
-            WrapperImplementationType = typeof(RequestHandlerWrapper<TRequest, TResponse>),
+            RegisterWrapper = (handlerRegistry, _) =>
+            {
+                handlerRegistry.Register<TRequest, TResponse>();
+            },
             Lifetime = lifetime
         });
         return options;
@@ -95,8 +97,10 @@ public static class NativeMediatorOptionsExtensions
         {
             ServiceType = typeof(IStreamRequestHandler<TRequest, TResponse>),
             ImplementationType = typeof(THandler),
-            WrapperServiceType = typeof(IStreamRequestHandlerWrapper<TResponse>),
-            WrapperImplementationType = typeof(StreamRequestHandlerWrapper<TRequest, TResponse>),
+            RegisterWrapper = (_, streamHandlerRegistry) =>
+            {
+                streamHandlerRegistry.Register<TRequest, TResponse>();
+            },
             Lifetime = lifetime
         });
         return options;

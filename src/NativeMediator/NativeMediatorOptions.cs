@@ -46,10 +46,10 @@ internal sealed class HandlerRegistration
     [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)]
     public required Type ImplementationType { get; init; }
 
-    public Type? WrapperServiceType { get; init; }
-
-    [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)]
-    public Type? WrapperImplementationType { get; init; }
+    /// <summary>
+    /// Action to register the handler wrapper in the appropriate registry.
+    /// </summary>
+    public Action<RequestHandlerRegistry, StreamRequestHandlerRegistry>? RegisterWrapper { get; init; }
 
     /// <summary>
     /// Indicates if this is a notification handler (allows multiple handlers for same notification type).
