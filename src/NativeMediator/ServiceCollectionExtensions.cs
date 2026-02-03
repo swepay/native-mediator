@@ -25,6 +25,13 @@ public static class ServiceCollectionExtensions
         var options = new NativeMediatorOptions();
         configure(options);
 
+        // Create and register the handler registries
+        var handlerRegistry = new RequestHandlerRegistry();
+        var streamHandlerRegistry = new StreamRequestHandlerRegistry();
+
+        services.TryAddSingleton(handlerRegistry);
+        services.TryAddSingleton(streamHandlerRegistry);
+
         // Register the mediator
         var mediatorDescriptor = options.MediatorLifetime switch
         {
@@ -64,15 +71,8 @@ public static class ServiceCollectionExtensions
                 services.TryAdd(descriptor);
             }
 
-            // Register wrapper if it's a request handler
-            if (registration.WrapperServiceType is not null && registration.WrapperImplementationType is not null)
-            {
-                var wrapperDescriptor = ServiceDescriptor.Describe(
-                    registration.WrapperServiceType,
-                    registration.WrapperImplementationType,
-                    registration.Lifetime);
-                services.TryAdd(wrapperDescriptor);
-            }
+            // Register wrapper in the registry if it's a request handler
+            registration.RegisterWrapper?.Invoke(handlerRegistry, streamHandlerRegistry);
         }
 
         // Register pipeline behaviors
@@ -127,7 +127,10 @@ public static class ServiceCollectionExtensions
 
     private static bool IsHandlerInterface(Type type)
     {
-        if (!type.IsGenericType) return false;
+        if (!type.IsGenericType)
+        {
+            return false;
+        }
 
         var genericTypeDef = type.GetGenericTypeDefinition();
         return genericTypeDef == typeof(IRequestHandler<,>) ||
