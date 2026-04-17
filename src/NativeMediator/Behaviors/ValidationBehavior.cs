@@ -130,8 +130,16 @@ public sealed class ValidationException : Exception
 
     private static string FormatMessage(IReadOnlyList<ValidationError> errors)
     {
-        if (errors.Count == 0) return "Validation failed.";
-        if (errors.Count == 1) return $"Validation failed: {errors[0].ErrorMessage}";
+        if (errors.Count == 0)
+        {
+            return "Validation failed.";
+        }
+
+        if (errors.Count == 1)
+        {
+            return $"Validation failed: {errors[0].ErrorMessage}";
+        }
+
         return $"Validation failed with {errors.Count} errors. First error: {errors[0].ErrorMessage}";
     }
 }
